@@ -1,0 +1,25 @@
+{
+    "name": "akl/envoy",
+    "description": "Data transmitter with encapsulation",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrew Klatzke",
+            "email": "andrew@andrewklatzke.com"
+        }
+    ],
+    "autoload" : {
+        "psr-4" : {
+            "AKL\\" : "src"
+        }
+    },
+    "repositories": [],
+    "require-dev": {
+        "phpunit/phpunit" : "4.0.*",
+        "akl/rout": "dev-master",
+        "raveren/kint": "0.9.*@dev"
+    },
+    "require" : {
+
+    }
+}
