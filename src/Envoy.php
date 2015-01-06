@@ -33,6 +33,40 @@ class Envoy
 		return self::$provider->getLimited( $limiterArray, $group );
 	}
 
+	public static function zip( Array $groupNames, $keys = [] )
+	{
+		$toZip = self::groupsFromArray($groupNames);
+
+		$zipped = call_user_func_array( 'array_merge_recursive', $toZip );
+
+		if( ! empty($keys) )
+		{
+			$limited = [];
+
+			foreach( $keys as $key ) $limited[$key] = $zipped[$key];
+
+			return $limited;
+		}
+
+		return $zipped;
+	}
+
+	public static function shared( Array $groupNames )
+	{
+		$arrays = self::groupsFromArray($groupNames);
+
+		$shared = call_user_func_array( 'array_intersect_key', $arrays );
+
+		return $shared;
+	}
+
+	private static function groupsFromArray( Array $groupNames )
+	{
+		return array_map( function( $name ){
+			return Envoy::group($name);
+		}, $groupNames );
+	}
+
 	public static function group($name)
 	{
 		self::start();
