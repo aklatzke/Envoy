@@ -43,7 +43,7 @@ class DataProvider
 				$temp[$limiter] = NULL;
 			}
 
-			$temp[$limiter] =$this->groups[$group][$limiter];
+			if( isset($this->groups[$group]) && isset($this->groups[$group][$limiter]) ) $temp[$limiter] = $this->groups[$group][$limiter];
 		}
 
 		return $temp;
