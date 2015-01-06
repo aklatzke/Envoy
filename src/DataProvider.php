@@ -8,15 +8,8 @@ class DataProvider
 		'default' => []
 	];
 
-	public function __construct(  )
-	{
-
-	}
-
 	public function getValue( $key, $name = 'default' )
 	{
-		d($this->groups);
-
 		if( ! $this->checkKeyExists( $key, $name ) )
 		{
 			return NULL;
@@ -47,6 +40,11 @@ class DataProvider
 		}
 
 		return $temp;
+	}
+
+	public function hasGroup( $groupName )
+	{
+		return isset( $this->groups[$groupName] );
 	}
 
 	public function setValue( $key, $data, $group = 'default' )
