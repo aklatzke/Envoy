@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+	colors="true"
+	bootstrap="tests/setup.php"
+	backupGlobals="false"
+	backupStaticAttributes="false"
+	convertErrorsToExceptions="true"
+	convertNoticesToExceptions="true"
+	convertWarningsToExceptions="true"
+	processIsolation="false"
+	stopOnError="false"
+	stopOnFailure="false"
+	stopOnIncomplete="false"
+	stopOnSkipped="false"
+	strict="false"
+	syntaxCheck="true"
+	verbose="true"
+        >
+    <testsuites>
+        <testsuite name="Envoy Test Suite">
+            <directory>./tests/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
