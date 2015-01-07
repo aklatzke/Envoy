@@ -10,7 +10,8 @@
     ],
     "autoload" : {
         "psr-4" : {
-            "AKL\\" : "src"
+            "AKL\\" : "src",
+            "AKL\\Envoy\\" : "src"
         }
     },
     "repositories": [],

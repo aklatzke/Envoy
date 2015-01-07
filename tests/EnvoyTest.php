@@ -18,7 +18,7 @@ class EnvoyTest extends \PHPUnit_Framework_TestCase
 
 	public function testProviderIsSet(  )
 	{
-		$this->assertInstanceOf('AKL\DataProvider', Envoy::$provider, 'Envoy failed to instantiate the correct object type.');
+		$this->assertInstanceOf('AKL\Envoy\DataRepository', Envoy::$dataRepository, 'Envoy failed to instantiate the correct object type.');
 	}
 
 	public function testSetDefault(  )
@@ -80,9 +80,14 @@ class EnvoyTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue( Envoy::exists( 'AnotherTestCaseGroup' ) );
 	}
 
-	public function testNotExists()
+	public function testNotExists(  )
 	{
 		$this->assertFalse( Envoy::exists( 'ThisGroupDoesntExist' ) );
+	}
+
+	public function testIsPrivateGroup(  )
+	{
+		$this->assertFalse( Envoy::isPrivateGroup( 'AnotherTestCaseGroup' ) );
 	}
 
 	public function testOnlyDefault(  )
