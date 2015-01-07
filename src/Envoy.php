@@ -198,7 +198,7 @@ class Envoy
 	{
 		self::start();
 
-		if( ! self::isAccessibleGroup( $groupName ) ) return self::$dataRepository->getValue( $key, $groupName );
+		if( self::isAccessibleGroup( $groupName ) ) return self::$dataRepository->getValue( $key, $groupName );
 
 		if( $password !== '' && self::$securityRepository->check(  $groupName, $password ) )
 			return self::$dataRepository->getValue( $groupName );
