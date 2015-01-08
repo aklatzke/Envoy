@@ -18,7 +18,7 @@ class EnvoyTest extends \PHPUnit_Framework_TestCase
 
 	public function testProviderIsSet(  )
 	{
-		$this->assertInstanceOf('AKL\DataProvider', Envoy::$provider, 'Envoy failed to instantiate the correct object type.');
+		$this->assertInstanceOf('AKL\Envoy\DataRepository', Envoy::$dataRepository, 'Envoy failed to instantiate the correct object type.');
 	}
 
 	public function testSetDefault(  )
@@ -52,7 +52,8 @@ class EnvoyTest extends \PHPUnit_Framework_TestCase
 		$notFoundVar = Envoy::get('var_that_shouldnt_exist_in_default_group');
 		# reference the default_var key that we set in testSetDefault()
 		# should be equal to int(1) in default group
-		$this->assertTrue( $foundVar === 1, "Envoy::get() failed to pull the default_var from the default group.");
+
+		$this->assertEquals( 1, $foundVar, "Envoy::get() failed to pull the default_var from the default group.");
 		# should return null if key does not exist
 		$this->assertNull( $notFoundVar, 'Envoy::get() did not return null on unfound variable' );
 	}
@@ -62,7 +63,7 @@ class EnvoyTest extends \PHPUnit_Framework_TestCase
 		$foundVar = Envoy::get('testCaseGroup_flag', 'TestCaseGroup');
 		$notFoundVar = Envoy::get('var_that_shouldnt_exist_in_test_case_group', 'TestCaseGroup');
 		# should be equal to string('one') in TestCaseGroup
-		$this->assertTrue( $foundVar === 'one', "Envoy::get() failed to pull the default_var from the TestCaseGroup.");
+		$this->assertSame( 'one', $foundVar, "Envoy::get() failed to pull the default_var from the TestCaseGroup.");
 		# should return null if key does not exist
 		$this->assertNull( $notFoundVar, 'Envoy::get() did not return null on unfound variable' );
 	}
@@ -80,9 +81,14 @@ class EnvoyTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue( Envoy::exists( 'AnotherTestCaseGroup' ) );
 	}
 
-	public function testNotExists()
+	public function testNotExists(  )
 	{
 		$this->assertFalse( Envoy::exists( 'ThisGroupDoesntExist' ) );
+	}
+
+	public function testIsPrivateGroup(  )
+	{
+		$this->assertFalse( Envoy::isPrivateGroup( 'AnotherTestCaseGroup' ) );
 	}
 
 	public function testOnlyDefault(  )

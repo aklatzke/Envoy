@@ -10,13 +10,13 @@
     ],
     "autoload" : {
         "psr-4" : {
-            "AKL\\" : "src"
+            "AKL\\" : "src/Envoy",
+            "AKL\\Envoy\\" : "src/Envoy"
         }
     },
     "repositories": [],
     "require-dev": {
         "phpunit/phpunit" : "4.0.*",
-        "akl/rout": "dev-master",
         "raveren/kint": "0.9.*@dev"
     },
     "require" : {

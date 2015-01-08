@@ -1,8 +1,8 @@
 <?php
 
-namespace AKL;
+namespace AKL\Envoy;
 
-class DataProvider
+class DataRepository
 {
 	protected $groups = [
 		'default' => []
@@ -57,10 +57,11 @@ class DataProvider
 	public function setValues( $arr, $group )
 	{
 		$this->createGroupIfNotExists( $group );
+
 		return $this->groups[$group] = array_merge($this->groups[$group], $arr);
 	}
 
-	private function createGroupIfNotExists( $name )
+	public function createGroupIfNotExists( $name )
 	{
 		if( ! isset( $this->groups[$name] ) ) $this->groups[$name] = [];
 
